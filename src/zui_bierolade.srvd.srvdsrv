@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service definition for ZC_bierolade'
+define service ZUI_BIEROLADE {
+  expose ZC_BIEROLADE_BIER as Bier;
+  expose ZC_BIEROLADE_RATING as Rating;
+  expose ZI_BIEROLADE_BREWERIES as Brewery;
+}

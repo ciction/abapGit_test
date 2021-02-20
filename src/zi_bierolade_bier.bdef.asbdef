@@ -1,0 +1,69 @@
+managed; // implementation in class zbp_i_bierolade_bier unique;
+
+define behavior for ZI_BIEROLADE_BIER alias Bier
+persistent table zbierolade_beer
+lock master
+//authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+  association _Rating { create; }
+
+  field ( numbering : managed, readonly ) BeerId;
+
+  mapping for zbierolade_beer
+  {
+    BeerId = beer_id;
+    Brewery = brewery;
+    Name = name;
+    Style = style;
+    Abv = abv;
+    Origin = origin;
+    Descr = descr;
+    AvgRating = avg_rating;
+    ImageUrl = image_url;
+    CreatedBy = created_by;
+    CreatedAt = created_at;
+    LastChangedBy = last_changed_by;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+
+}
+
+define behavior for ZI_BIEROLADE_RATING alias Rating
+persistent table zbierolade_rate
+lock dependent by _Bier
+//authorization dependent by <association>
+etag master LocalLastChangedAt
+{
+  update;
+  delete;
+  association _Bier;
+
+  field ( numbering : managed, readonly ) RatingId;
+  field ( readonly ) BeerId;
+
+  mapping for zbierolade_rate
+  {
+    RatingId = rating_id;
+    BeerId = beer_id;
+    Creator = creator;
+    Collar = collar;
+    Opacity = opacity;
+    Color = color;
+    Fruit = fruit;
+    Malt = malt;
+    Spice = spice;
+    Sweet = sweet;
+    Bitter = bitter;
+    Sour = sour;
+    Body = body;
+    Acidity = acidity;
+    Rating = rating;
+  }
+
+
+}

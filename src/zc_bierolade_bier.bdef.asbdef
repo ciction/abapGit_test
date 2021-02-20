@@ -1,0 +1,20 @@
+projection;
+
+define behavior for ZC_BIEROLADE_BIER alias Bier
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Rating { create; }
+}
+
+define behavior for ZC_BIEROLADE_RATING alias Rating
+use etag
+{
+  use update;
+  use delete;
+
+  use association _Bier;
+}

@@ -1,0 +1,12 @@
+@EndUserText.label: 'Access Control for ZI_BIEROLADE_BIER'
+@MappingRole: true
+define role ZI_BIEROLADE_BIER {
+    grant
+        select
+            on
+                ZI_BIEROLADE_BIER
+                    where
+                        ( Brewery ) = aspect pfcg_auth(ZB_BREWERY, ZB_BREWERY, ACTVT = '03' ) or true;
+                       
+                        
+}

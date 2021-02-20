@@ -1,0 +1,60 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: { typeName: 'Beer',
+                  typeNamePlural: 'Beers',
+                  title: { type: #STANDARD, label: 'Beer', value: 'Name' }
+                 },
+    presentationVariant: [{ sortOrder: [{ by: 'BeerId', direction: #DESC }]}]
+        }
+
+annotate view ZC_BIEROLADE_BIER with
+{
+  @UI.facet: [{ id: 'Beer',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE ,
+                label: 'Beer',
+                position:10 },
+              { id: 'Rating',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE ,
+                label: 'Rating',
+                position:20,
+                targetElement: '_Rating'}]
+  @UI.lineItem: [{ position: 1 }]
+  @UI.hidden: true
+  BeerId;
+  @UI: { lineItem:       [{ position: 10 }],
+         identification: [{ position: 10 }],
+         selectionField: [{ position: 10 }] }
+  Name;
+  @UI: { lineItem:       [{ position: 20 }],
+         identification: [{ position: 20 }],
+         selectionField: [{ position: 20 }] }
+  Brewery;
+  @UI: { lineItem:       [{ position: 30 }],
+         identification: [{ position: 30 }] ,
+         selectionField: [{ position: 30 }]}
+  Style;
+  @UI: { lineItem:       [{ position: 40 }],
+         identification: [{ position: 40 }] }
+  Abv;
+  @UI: { lineItem:       [{ position: 50 }],
+         identification: [{ position: 50 }] }
+  Origin;
+  @UI: { lineItem:       [{ position: 60 }],
+         identification: [{ position: 60 }] }
+  Descr;
+  @UI: { lineItem:       [{ position: 70 }],
+         identification: [{ position: 70 }] }
+  AvgRating;
+  @UI: { lineItem:       [{ position: 80 }],
+         identification: [{ position: 80 }] }
+  ImageUrl;
+
+  @UI.hidden:true
+  LastChangedAt;
+
+  @UI.hidden:true
+  LocalLastChangedAt;
+
+}
