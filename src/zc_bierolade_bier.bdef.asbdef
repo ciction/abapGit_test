@@ -8,6 +8,9 @@ use etag
   use delete;
 
   use association _Rating { create; }
+
+  use action AcceptBeer;
+  use action RejectBeer;
 }
 
 define behavior for ZC_BIEROLADE_RATING alias Rating

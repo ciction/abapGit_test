@@ -15,6 +15,7 @@ define root view entity ZC_BIEROLADE_BIER
       Style,
       Abv,
       Origin,
+      Status,
       Descr,
       AvgRating,
 

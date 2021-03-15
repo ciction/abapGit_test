@@ -41,6 +41,11 @@ define root view entity ZI_BIEROLADE_BIER
       }
       origin                as Origin,
       @EndUserText: {
+      label: 'Status' ,
+      quickInfo: 'Status'
+      }
+      status                as Status,
+      @EndUserText: {
       label: 'Descr' ,
       quickInfo: 'Descr'
       }

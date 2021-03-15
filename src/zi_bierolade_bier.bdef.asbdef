@@ -1,6 +1,7 @@
-managed; // implementation in class zbp_i_bierolade_bier unique;
+managed;
 
 define behavior for ZI_BIEROLADE_BIER alias Bier
+implementation in class zbp_i_bierolade_bier unique
 persistent table zbierolade_beer
 lock master
 //authorization master ( instance )
@@ -12,6 +13,19 @@ etag master LocalLastChangedAt
   association _Rating { create; }
 
   field ( numbering : managed, readonly ) BeerId;
+  field ( readonly ) AvgRating;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedAt, LastChangedBy, LocalLastChangedAt;
+  field ( mandatory ) Brewery, Name, Style;
+
+  action ( features: instance ) AcceptBeer result [1] $self;
+  action ( features: instance ) RejectBeer result [1] $self;
+//  internal action recalculatePrice;
+//
+//  determination setInitialRating on modify { create; }
+//  determination calculateTotalPrice on modify { create; }
+//
+//  validation validateBrewery on save{ field Brewery; create;}
+//  validation validateName on save{ field Name; create;}
 
   mapping for zbierolade_beer
   {
@@ -21,6 +35,7 @@ etag master LocalLastChangedAt
     Style = style;
     Abv = abv;
     Origin = origin;
+    Status = status;
     Descr = descr;
     AvgRating = avg_rating;
     ImageUrl = image_url;
@@ -34,6 +49,7 @@ etag master LocalLastChangedAt
 }
 
 define behavior for ZI_BIEROLADE_RATING alias Rating
+implementation in class zbp_i_bierolade_rating unique
 persistent table zbierolade_rate
 lock dependent by _Bier
 //authorization dependent by <association>
@@ -45,6 +61,10 @@ etag master LocalLastChangedAt
 
   field ( numbering : managed, readonly ) RatingId;
   field ( readonly ) BeerId;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedAt, LastChangedBy, LocalLastChangedAt;
+
+  determination doSomething on modify { create; }
+
 
   mapping for zbierolade_rate
   {

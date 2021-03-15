@@ -41,14 +41,21 @@ annotate view ZC_BIEROLADE_BIER with
   @UI: { lineItem:       [{ position: 50 }],
          identification: [{ position: 50 }] }
   Origin;
-  @UI: { lineItem:       [{ position: 60 }],
-         identification: [{ position: 60 }] }
-  Descr;
+  @UI: { lineItem:       [{ position: 60 },
+                          { type: #FOR_ACTION, dataAction: 'AcceptBeer', label: 'Accept Beer' },
+                          { type: #FOR_ACTION, dataAction: 'RejectBeer', label: 'Reject Beer' } ],
+         identification: [{ position: 60 },
+                          { type: #FOR_ACTION, dataAction: 'AcceptBeer', label: 'Accept Beer' },
+                          { type: #FOR_ACTION, dataAction: 'RejectBeer', label: 'Reject Beer' } ] }
+  Status;
   @UI: { lineItem:       [{ position: 70 }],
          identification: [{ position: 70 }] }
-  AvgRating;
+  Descr;
   @UI: { lineItem:       [{ position: 80 }],
          identification: [{ position: 80 }] }
+  AvgRating;
+  @UI: { lineItem:       [{ position: 90 }],
+         identification: [{ position: 90 }] }
   ImageUrl;
 
   @UI.hidden:true

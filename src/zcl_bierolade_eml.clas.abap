@@ -103,35 +103,52 @@ CLASS zcl_bierolade_eml IMPLEMENTATION.
 **---------------------------------------------------------------------------------------
 
 
+**=====================================================================================
+**    "STEP 7  -  MODIFY CREATE
+**=====================================================================================
+*    MODIFY ENTITIES OF zi_bierolade_bier
+*     ENTITY Bier
+*        CREATE
+*        SET FIELDS WITH VALUE #( (  %cid = 'My_content_ID'
+*                                    Name = 'My_beer'
+*                                    Brewery = 'My_berwery'
+*                                    Descr = 'RAP test'
+*                                    Style = 'Stout'
+*                                    ImageUrl = 'https://miro.medium.com/max/256/1*d69DKqFDwBZn_23mizMWcQ.png' ) )
+*
+*         MAPPED DATA(lt_mapped)
+*         FAILED DATA(lt_failed)
+*         REPORTED DATA(lt_reported).
+*
+*
+*    out->write( lt_mapped-bier ).
+*
+*    COMMIT ENTITIES
+*        RESPONSE OF zi_bierolade_bier
+*        FAILED DATA(lt_failed_commit)
+*        REPORTED DATA(lt_reported_commit).
+*
+*    out->write('create finished').
+**---------------------------------------------------------------------------------------
+
 *=====================================================================================
-*    "STEP 7  -  MODIFY CREATE
+*    "STEP 7  -  MODIFY DELETE
 *=====================================================================================
     MODIFY ENTITIES OF zi_bierolade_bier
      ENTITY Bier
-        CREATE
-        SET FIELDS WITH VALUE #( (  %cid = 'My_content_ID'
-                                    Name = 'My_beer'
-                                    Brewery = 'My_berwery'
-                                    Descr = 'RAP test'
-                                    Style = 'Stout'
-                                    ImageUrl = 'https://miro.medium.com/max/256/1*d69DKqFDwBZn_23mizMWcQ.png' ) )
-
-         MAPPED DATA(lt_mapped)
+        DELETE FROM
+         VALUE #( ( BeerId = '020A45DC0A821EEB9CEBFEC8A3AD2E21' ) )
          FAILED DATA(lt_failed)
          REPORTED DATA(lt_reported).
 
-
-    out->write( lt_mapped-bier ).
 
     COMMIT ENTITIES
         RESPONSE OF zi_bierolade_bier
         FAILED DATA(lt_failed_commit)
         REPORTED DATA(lt_reported_commit).
 
-    out->write('create finished').
+    out->write('delete finished').
 *---------------------------------------------------------------------------------------
-
-
 
 
   ENDMETHOD.

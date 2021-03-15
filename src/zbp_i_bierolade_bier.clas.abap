@@ -1,0 +1,5 @@
+CLASS zbp_i_bierolade_bier DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_bierolade_bier.
+ENDCLASS.
+
+CLASS zbp_i_bierolade_bier IMPLEMENTATION.
+ENDCLASS.
